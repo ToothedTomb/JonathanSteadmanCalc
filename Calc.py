@@ -13,7 +13,7 @@ def btnClearDisplay():
     text_Input.set("")
 cal = tk.Tk()
 
-cal.title("Jonathan Steadman Calculator 3.0")
+cal.title("Jonathan Steadman Calculator 4.0")
 cal.tk.call('wm', 'iconphoto', cal._w, tk.PhotoImage(file='icons.png')) #Icon made by freepik
 cal.resizable(0,0)
 operator=""
