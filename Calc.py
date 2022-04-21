@@ -3,6 +3,7 @@ from tkinter import*
 import tarfile
 import os
 import tkinter as tk
+from tkinter.messagebox import showinfo
 def btnClick(numbers):
     global operator
     operator=operator + str(numbers)
@@ -12,9 +13,19 @@ def btnClearDisplay():
     operator=""
     text_Input.set("")
 cal = tk.Tk()
+my_menu=Menu(cal)
+cal.config(menu=my_menu,background="#90ee90")
+def our_command():
+        showinfo("What is this software?", "This software is a basic calculator for Linux and FreeBSD!") 
+def our_command2():
+        showinfo("Who made this software?", "This software was made by Jonathan Steadman!") 
+file_menu= Menu(my_menu,background="#90ee90")
+my_menu.add_cascade(label="About:",font=("Ubuntu",18),activebackground="#90ee90", menu=file_menu)
+file_menu.add_command(label="What is this software?",font=("Ubuntu",18),activebackground="#90ee90",command=our_command)
+file_menu.add_command(label="Who made this software?",font=("Ubuntu",18),activebackground="#90ee90",command=our_command2)
 
-cal.title("Calculator For Linux 6.0! Free calculator for Linux!")
-cal.tk.call('wm', 'iconphoto', cal._w, tk.PhotoImage(file='icons.png')) #Icon made by freepik
+cal.title("Basic Calculator 7.0!")
+cal.tk.call('wm', 'iconphoto', cal._w, tk.PhotoImage(file='icons.png'))
 cal.resizable(0,0)
 cal.config(bg='#90ee90')
 operator=""
