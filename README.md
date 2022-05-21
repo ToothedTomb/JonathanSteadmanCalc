@@ -1,4 +1,5 @@
-#Calculator For Linux 7.0!!
+#Calculator For Linux 8.0!!
 Simple calculator for Linux.
 Lightweight and easy to use.
-![Screenshot from 2022-04-21 16-18-01](https://user-images.githubusercontent.com/52569279/164490725-bb8bd3c1-9df2-4073-a795-04b2c7ab7fcc.png)
+
+![Screenshot from 2022-05-21 17-29-59](https://user-images.githubusercontent.com/52569279/169660791-efde23c8-434e-41e5-a2bf-bc9a1d29be38.png)
