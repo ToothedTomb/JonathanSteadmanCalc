@@ -3,6 +3,7 @@ from tkinter import*
 import tarfile
 import os
 import tkinter as tk
+from tkinter import messagebox
 from tkinter.messagebox import showinfo
 def btnClick(numbers):
     global operator
@@ -16,15 +17,33 @@ cal = tk.Tk()
 my_menu=Menu(cal)
 cal.config(menu=my_menu,background="#90ee90")
 def our_command():
-        showinfo("What is this software?", "This software is a basic calculator for Linux and FreeBSD!") 
+    root = tk.Tk() 
+    root.resizable(0,0)
+    root.title("What is this software?")
+
+    labelTitle = tk.Label(root,font=("Ubuntu", 26,"bold","underline"),anchor='center', text="What is this software?")
+    label = tk.Label(root,font=("Ubuntu", 16,"bold",),anchor='center', text="This is a free and open source calculator for Linux and FreeBSD.")
+    labelTitle.pack(side="top",fill="x",pady=1)
+    label.pack(side="top", fill="x", pady=2)
+    B1 = tk.Button(root, text="Exit",font=("ubuntu",28),bg="green",border=12,activebackground='orange', command = root.destroy)
+    B1.pack()
 def our_command2():
-        showinfo("Who made this software?", "This software was made by Jonathan Steadman!") 
+    root = tk.Tk() 
+    root.resizable(0,0)
+    root.title("Who made this software?")
+
+    labelTitle = tk.Label(root,font=("Ubuntu", 26,"bold","underline"),anchor='center', text="Who made this software?")
+    label = tk.Label(root,font=("Ubuntu", 16,"bold",),anchor='center', text="Jonathan Steadman has made this software.")
+    labelTitle.pack(side="top",fill="x",pady=1)
+    label.pack(side="top", fill="x", pady=2)
+    B1 = tk.Button(root, text="Exit",font=("ubuntu",28),bg="green",border=12,activebackground='orange', command = root.destroy)
+    B1.pack()
 file_menu= Menu(my_menu,background="#90ee90")
 my_menu.add_cascade(label="About:",font=("Ubuntu",18),activebackground="#90ee90", menu=file_menu)
 file_menu.add_command(label="What is this software?",font=("Ubuntu",18),activebackground="#90ee90",command=our_command)
 file_menu.add_command(label="Who made this software?",font=("Ubuntu",18),activebackground="#90ee90",command=our_command2)
 
-cal.title("Basic Calculator 7.0!")
+cal.title("Basic Calculator 8.0!")
 cal.tk.call('wm', 'iconphoto', cal._w, tk.PhotoImage(file='icons.png'))
 cal.resizable(0,0)
 cal.config(bg='#90ee90')
@@ -34,6 +53,7 @@ def btnEqualsInput():
     global oper6ator
     sumup=str(eval(operator))
     text_Input.set(sumup)
+
 def on_enter(e):
    btn7.config(background='OrangeRed3', foreground= "white")
 operator=""
@@ -74,4 +94,13 @@ btnEquals=Button(cal,padx=16, pady=16, bd=8, fg="black",font=('Ubuntu',24,'bold'
 text="=", bg="#3b8eea",activebackground='orange',command=btnEqualsInput).grid(row=4,column=3)
 btnClear=Button(cal,padx=16, pady=16, bd=8, fg="black",font=('Ubuntu',28,'bold'),
 text="C", bg="green", activebackground='orange',command= btnClearDisplay).grid(row=4,column=2)
+
+#=======================================================================
+#When the user try to close the software. They will see this message. Press okay to close.
+#To cancel press cancel. 
+def on_closing():
+    if messagebox.askokcancel("Confirm to exit the software:", "Are you sure you want to exit?"):
+        cal.destroy()
+cal.protocol("WM_DELETE_WINDOW", on_closing)
 cal.mainloop() 
+#
