@@ -1,4 +1,4 @@
-# Calculator For Linux 8.0!!
+# Calculator For Linux 9.0!!
 Simple calculator for Linux.
 Lightweight and easy to use.
 
