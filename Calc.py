@@ -16,7 +16,7 @@ def btnClearDisplay():
 cal = tk.Tk()
 my_menu=Menu(cal)
 cal.config(menu=my_menu,background="#90ee90")
-def our_command():
+def WhatIsThisSoftware():
     root = tk.Tk() 
     root.resizable(0,0)
     root.title("What is this software?")
@@ -27,9 +27,11 @@ def our_command():
     label.pack(side="top", fill="x", pady=2)
     B1 = tk.Button(root, text="Exit",font=("ubuntu",28),bg="green",border=12,activebackground='orange', command = root.destroy)
     B1.pack()
-def our_command2():
-    root = tk.Tk() 
+def WhoMadeThisSoftware():
+    root = tk.Toplevel() 
     root.resizable(0,0)
+    cal.tk.call('wm', 'iconphoto', cal._w, tk.PhotoImage(file='icons.png'))
+
     root.title("Who made this software?")
 
     labelTitle = tk.Label(root,font=("Ubuntu", 26,"bold","underline"),anchor='center', text="Who made this software?")
@@ -40,10 +42,10 @@ def our_command2():
     B1.pack()
 file_menu= Menu(my_menu,background="#90ee90")
 my_menu.add_cascade(label="About:",font=("Ubuntu",18),activebackground="#90ee90", menu=file_menu)
-file_menu.add_command(label="What is this software?",font=("Ubuntu",18),activebackground="#90ee90",command=our_command)
-file_menu.add_command(label="Who made this software?",font=("Ubuntu",18),activebackground="#90ee90",command=our_command2)
+file_menu.add_command(label="What is this software?",font=("Ubuntu",18),activebackground="#90ee90",command=WhatIsThisSoftware)
+file_menu.add_command(label="Who made this software?",font=("Ubuntu",18),activebackground="#90ee90",command=WhoMadeThisSoftware)
 
-cal.title("Basic Calculator 8.0!")
+cal.title("Basic Calculator 9.0!")
 cal.tk.call('wm', 'iconphoto', cal._w, tk.PhotoImage(file='icons.png'))
 cal.resizable(0,0)
 cal.config(bg='#90ee90')
@@ -99,8 +101,22 @@ text="C", bg="green", activebackground='orange',command= btnClearDisplay).grid(r
 #When the user try to close the software. They will see this message. Press okay to close.
 #To cancel press cancel. 
 def on_closing():
-    if messagebox.askokcancel("Confirm to exit the software:", "Are you sure you want to exit?"):
-        cal.destroy()
+    root = tk.Toplevel()  
+    root.resizable(0,0)
+    root.title("Confirm to exit the game:")
+    root.tk.call('wm', 'iconphoto', root._w, tk.PhotoImage(file='icons.png'))
+
+
+    labelTitle = tk.Label(root,font=("Ubuntu", 26,"bold","underline"),anchor='center', text="Confirm to exit the game:")
+    label = tk.Label(root,font=("Ubuntu", 16,"bold",),anchor='center', text="Are you sure you want to leave this game?")
+
+    labelTitle.pack(side="top",fill="x",pady=1)
+    label.pack(side="top", fill="x", pady=2)
+    B1 = tk.Button(root, text="Yes",font=("ubuntu",28),bg="green",border=12,activebackground='orange', command = root.quit)
+
+    B2 = tk.Button(root, text="No",font=("ubuntu",28),bg="green",border=12,activebackground='orange', command = root.destroy)
+    B1.pack(side=tk.LEFT, anchor=CENTER)
+    B2.pack(side=tk.RIGHT, anchor=CENTER)
 cal.protocol("WM_DELETE_WINDOW", on_closing)
 cal.mainloop() 
 #
