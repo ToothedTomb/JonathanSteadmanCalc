@@ -17,10 +17,11 @@ cal = tk.Tk()
 my_menu=Menu(cal)
 cal.config(menu=my_menu,background="#90ee90")
 def WhatIsThisSoftware():
-    root = tk.Tk() 
+    root = tk.Toplevel() 
     root.resizable(0,0)
+    root.attributes("-topmost", True)
     root.title("What is this software?")
-
+    root.tk.call('wm', 'iconphoto', root._w, tk.PhotoImage(file='icons.png'))
     labelTitle = tk.Label(root,font=("Ubuntu", 26,"bold","underline"),anchor='center', text="What is this software?")
     label = tk.Label(root,font=("Ubuntu", 16,"bold",),anchor='center', text="This is a free and open source calculator for Linux and FreeBSD.")
     labelTitle.pack(side="top",fill="x",pady=1)
@@ -30,7 +31,8 @@ def WhatIsThisSoftware():
 def WhoMadeThisSoftware():
     root = tk.Toplevel() 
     root.resizable(0,0)
-    cal.tk.call('wm', 'iconphoto', cal._w, tk.PhotoImage(file='icons.png'))
+    root.attributes("-topmost", True)
+    root.tk.call('wm', 'iconphoto', root._w, tk.PhotoImage(file='icons.png'))
 
     root.title("Who made this software?")
 
@@ -45,7 +47,7 @@ my_menu.add_cascade(label="About:",font=("Ubuntu",18),activebackground="#90ee90"
 file_menu.add_command(label="What is this software?",font=("Ubuntu",18),activebackground="#90ee90",command=WhatIsThisSoftware)
 file_menu.add_command(label="Who made this software?",font=("Ubuntu",18),activebackground="#90ee90",command=WhoMadeThisSoftware)
 
-cal.title("Basic Calculator 9.0!")
+cal.title("Basic Calculator 10.0!")
 cal.tk.call('wm', 'iconphoto', cal._w, tk.PhotoImage(file='icons.png'))
 cal.resizable(0,0)
 cal.config(bg='#90ee90')
@@ -103,6 +105,7 @@ text="C", bg="green", activebackground='orange',command= btnClearDisplay).grid(r
 def on_closing():
     root = tk.Toplevel()  
     root.resizable(0,0)
+    root.attributes("-topmost", True)
     root.title("Confirm to exit the game:")
     root.tk.call('wm', 'iconphoto', root._w, tk.PhotoImage(file='icons.png'))
 
