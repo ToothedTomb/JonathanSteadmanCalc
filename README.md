@@ -1,4 +1,4 @@
-# Calculator For Linux 10.0!!
+# Calculator For Linux 11.0!!
 Simple calculator for Linux.
 Lightweight and easy to use.
 
