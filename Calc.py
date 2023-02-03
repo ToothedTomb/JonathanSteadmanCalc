@@ -47,7 +47,7 @@ my_menu.add_cascade(label="About:",font=("Ubuntu",18),activebackground="#90ee90"
 file_menu.add_command(label="What is this software?",font=("Ubuntu",18),activebackground="#90ee90",command=WhatIsThisSoftware)
 file_menu.add_command(label="Who made this software?",font=("Ubuntu",18),activebackground="#90ee90",command=WhoMadeThisSoftware)
 
-cal.title("Basic Calculator 10.0!")
+cal.title("Basic Calculator 11.0!")
 cal.tk.call('wm', 'iconphoto', cal._w, tk.PhotoImage(file='icons.png'))
 cal.resizable(0,0)
 cal.config(bg='#90ee90')
@@ -62,7 +62,7 @@ def on_enter(e):
    btn7.config(background='OrangeRed3', foreground= "white")
 operator=""
 txtDisplay = Entry(cal,font=('Ubuntu', 30), textvariable=text_Input, bd=30, insertwidth=4,
-bg="#90ee90", justify='left').grid(columnspan=4)
+disabledbackground="#90ee90", justify='left',disabledforeground="black",state='disabled').grid(columnspan=4)
 btn7=Button(cal,padx=16,pady=16,bd=8, fg="black",font=('Ubuntu',24,'bold'),
 text="7", bg="green",activebackground='orange',command=lambda:btnClick(7)).grid(row=1,column=0)
 btn8=Button(cal,padx=16,pady=16,bd=8, fg="black",font=('Ubuntu',24,'bold'),
