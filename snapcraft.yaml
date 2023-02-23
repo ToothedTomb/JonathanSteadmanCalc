@@ -1,0 +1,18 @@
+name: basiccalc # you probably want to 'snapcraft register <name>'
+base: core18 # the base snap is the execution environment for this snap
+version: '1.0' # just for humans, typically '1.2+git' or '1.3.2'
+summary: Calculator # 79 char long summary
+description: |
+  This is a simple calculator that is used for Linux and FreeBSD.
+
+  This is free and open source.
+
+grade: stable # must be 'stable' to release into candidate/stable channels
+confinement: devmode # use 'strict' once you have the right plugs and slots
+
+parts:
+  snapcraft-tkinter:
+    # See 'snapcraft plugins'
+    command: bin/snapcraft-tkinter
+    plugin: python
+    source: https://github.com/ToothedTomb/JonathanSteadmanCalc
