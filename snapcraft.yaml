@@ -12,7 +12,15 @@ confinement: devmode # use 'strict' once you have the right plugs and slots
 
 parts:
   snapcraft-tkinter:
-    # See 'snapcraft plugins'
-    command: bin/snapcraft-tkinter
     plugin: python
-    source: https://github.com/ToothedTomb/JonathanSteadmanCalc
+    python-version: python3
+    # See 'snapcraft plugins'
+    source: .
+    stage-packages:
+      - python3-tk
+      
+apps:
+  command: bin/snapcraft-tkinter
+  environment:
+    TCL_LIBRARY: "$SNAP/usr/share/tcltk/tcl8.6"
+
