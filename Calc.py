@@ -2,6 +2,7 @@
 from tkinter import*
 import tarfile
 import os
+import math #Advaced calculations
 import tkinter as tk
 from tkinter import messagebox
 from tkinter.messagebox import showinfo
@@ -13,7 +14,24 @@ def btnClearDisplay():
     global operator
     operator=""
     text_Input.set("")
-    
+def btnDecimal():
+    global operator
+    operator = operator + "."
+    text_Input.set(operator)
+def btnSquare():
+    global operator
+    try:
+        result = str(eval(operator) ** 5)
+        text_Input.set(result)
+    except:
+        text_Input.set("ERROR - Invalid Syntax!")
+def btnSin():
+    global operator
+    try:
+        result = str(math.sin(math.radians(eval(operator))))
+        text_Input.set(result)
+    except:
+        text_Input.set("ERROR")
 cal = tk.Tk()
 my_menu=Menu(cal)
 cal.config(menu=my_menu,background="#90ee90")
@@ -43,12 +61,14 @@ def WhoMadeThisSoftware():
     label.pack(side="top", fill="x", pady=2)
     B1 = tk.Button(root, text="Exit",font=("ubuntu",28),bg="green",border=12,activebackground='orange', command = root.destroy)
     B1.pack()
+
+        
+
 file_menu= Menu(my_menu,background="#90ee90")
 my_menu.add_cascade(label="About:",font=("Ubuntu",18),activebackground="#90ee90", menu=file_menu)
 file_menu.add_command(label="What is this software?",font=("Ubuntu",18),activebackground="#90ee90",command=WhatIsThisSoftware)
 file_menu.add_command(label="Who made this software?",font=("Ubuntu",18),activebackground="#90ee90",command=WhoMadeThisSoftware)
-
-cal.title("Basic Calculator 12.0!")
+cal.title("Basic Calculator 13.0!")
 cal.tk.call('wm', 'iconphoto', cal._w, tk.PhotoImage(file='icons.png'))
 cal.resizable(0,0)
 cal.config(bg='#90ee90')
@@ -63,7 +83,13 @@ def btnEqualsInput():
         text_Input.set(sumup)
     except:
         text_Input.set("ERROR - Invalid Syntax!")
+def btnPi():
+    global operator
+    operator = operator +str(math.pi)
+    text_Input.set(operator)
 
+
+# Add this button definition among other button definitions
 
 def on_enter(e):
    btn7.config(background='OrangeRed3', foreground= "white")
@@ -103,12 +129,21 @@ text="*", bg="green",activebackground='orange',command=lambda:btnClick("*")).gri
 btn0=Button(cal,padx=16, pady=16,bd=8, fg="black",font=('Ubuntu',24,'bold'),
 text="0", bg="green",activebackground='orange',command=lambda:btnClick(0)).grid(row=4,column=0)
 Division=Button(cal,padx=16, pady=16,bd=8, fg="black",font=('Ubuntu',24,'bold'),
-text="/", bg="green",activebackground='orange',command=lambda:btnClick("/")).grid(row=4,column=1)
+text="/", bg="green",activebackground='orange',command=lambda:btnClick("/")).grid(row=4,column=3)
 btnEquals=Button(cal,padx=16, pady=16, bd=8, fg="black",font=('Ubuntu',24,'bold'),
-text="=", bg="#3b8eea",activebackground='orange',command=btnEqualsInput).grid(row=4,column=3)
+text="=", bg="#3b8eea",activebackground='orange',command=btnEqualsInput).grid(row=5,column=3)
 btnClear=Button(cal,padx=16, pady=16, bd=8, fg="black",font=('Ubuntu',28,'bold'),
-text="C", bg="green", activebackground='orange',command= btnClearDisplay).grid(row=4,column=2)
+text="C", bg="green", activebackground='orange',command= btnClearDisplay).grid(row=5,column=2)
 
+#Now add in decimal
+btnDot = Button(cal, padx=16, pady=16, bd=8, fg="black", font=('Ubuntu', 24, 'bold'),
+                text=".", bg="green", activebackground='orange', command=btnDecimal).grid(row=4, column=1)
+btnPi = Button(cal, padx=16, pady=16, bd=8, fg="black", font=('Ubuntu', 24, 'bold'),
+               text="π", bg="green", activebackground='orange', command=btnPi).grid(row=4, column=2)
+btnSqrt = Button(cal, padx=16, pady=16, bd=8, fg="black", font=('Ubuntu', 24, 'bold'),
+                 text="√", bg="green", activebackground='orange', command=btnSquare).grid(row=5, column=1)
+btnSin = Button(cal, padx=16, pady=16, bd=8, fg="black", font=('Ubuntu', 24, 'bold'),
+                text="sin", bg="green", activebackground='orange', command=btnSin).grid(row=5, column=0)
 #=======================================================================
 #=====================================================================================
 #If there is an error found. Then it will display a syntax error to the end user.
