@@ -1,5 +1,5 @@
-# Calculator For Linux 12.0!!
+# Calculator For Linux 13.0!!
 Simple calculator for Linux.
 Lightweight and easy to use.
 
-![Screenshot from 2023-02-11 13-00-41](https://user-images.githubusercontent.com/52569279/218259480-b2a5736d-18d8-4398-a08c-0ea5835bd4ae.png)
+![Screenshot from 2023-11-20 17-37-38](https://github.com/ToothedTomb/JonathanSteadmanCalc/assets/52569279/72850d95-439a-4599-84d7-95ab90cebfa5)
