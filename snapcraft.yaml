@@ -1,26 +1,40 @@
-name: basiccalc # you probably want to 'snapcraft register <name>'
-base: core18 # the base snap is the execution environment for this snap
-version: '1.0' # just for humans, typically '1.2+git' or '1.3.2'
-summary: Calculator # 79 char long summary
+name: basic-calc
+version: '1.0'
+summary: Simple calculator for Linux
 description: |
-  This is a simple calculator that is used for Linux and FreeBSD.
+  This is a simple calculator for Linux.
 
-  This is free and open source.
+grade: stable
+confinement: strict
 
-grade: stable # must be 'stable' to release into candidate/stable channels
-confinement: devmode # use 'strict' once you have the right plugs and slots
+apps:
+  basic-calc:
+    command: basic_calc.py
+    plugs:
+      - home
+    desktop: basic-calc.desktop  # Specify the desktop file
 
 parts:
-  snapcraft-tkinter:
+  basic-calc:
+    source: .
     plugin: python
     python-version: python3
-    # See 'snapcraft plugins'
-    source: .
     stage-packages:
-      - python3-tk
-      
-apps:
-  command: bin/snapcraft-tkinter
-  environment:
-    TCL_LIBRARY: "$SNAP/usr/share/tcltk/tcl8.6"
+      - python3-tk  # Tkinter package
+
+  desktop-entry:
+    plugin: dump
+    source: desktop-entry/
+    organize:
+      basic-calc.desktop: usr/share/applications/basic-calc.desktop
+    after:
+      - basic-calc
+
+  desktop-icons:
+    plugin: dump
+    source: desktop-entry/icons/
+    organize:
+      icons.png: usr/share/icons/hicolor/48x48/apps/icons.png
+    after:
+      - desktop-entry
 

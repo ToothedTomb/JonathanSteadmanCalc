@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Calculator
+Comment=A simple calculator
+Exec=/usr/bin/Calc.py # Update this path accordingly
+Terminal=false
+Type=Application
+Categories=Utility;Application;
+Name[en_GB]=basic-calc.desktop
