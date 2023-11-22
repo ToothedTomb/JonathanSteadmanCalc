@@ -9,7 +9,7 @@ confinement: strict
 
 apps:
   basic-calc:
-    command: basic_calc.py
+    command: Calc.py
     plugs:
       - home
     desktop: basic-calc.desktop  # Specify the desktop file
